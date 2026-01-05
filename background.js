@@ -1,7 +1,6 @@
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  console.log("📩 Background received:", msg);
+  console.log(" Background received:", msg);
 
-  // simple ping test
   if (msg.type === "PING") {
     sendResponse({ reply: "pong" });
     return true;
@@ -13,18 +12,17 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         sendResponse({ success: true, result });
       })
       .catch(err => {
-        console.error("❌ Scan failed:", err);
+        console.error(" Scan failed:", err);
         sendResponse({ success: false, error: err.message });
       });
 
-    return true; // VERY IMPORTANT
+    return true;
   }
 });
 
 async function handleScanEmail(msg) {
   const { subject, body, urls } = msg;
 
-  // 1️⃣ Text phishing API
   const textResponse = await fetch(
     "http://127.0.0.1:8000/predict-body",
     {
@@ -34,7 +32,6 @@ async function handleScanEmail(msg) {
     }
   ).then(res => res.json());
 
-  // 2️⃣ URL phishing API
   let urlResults = [];
 
   for (const url of urls) {
@@ -59,10 +56,9 @@ async function handleScanEmail(msg) {
     urlScores: urlResults
   };
 
-  // 3️⃣ Store result
   chrome.storage.local.set({ phishingResult: finalResult });
 
-  console.log("✅ Phishing analysis stored:", finalResult);
+  console.log(" Phishing analysis stored:", finalResult);
 
   return finalResult;
 }

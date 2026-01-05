@@ -1,4 +1,4 @@
-console.log("✅ content.js loaded");
+console.log("content.js loaded");
 
 chrome.runtime.sendMessage({ type: "PING" });
 
@@ -9,7 +9,6 @@ function extractUrls(text) {
 }
 
 const observer = new MutationObserver(() => {
-  // email body exists ONLY when an email is open
   const bodyEl = document.querySelector("div.a3s");
   const subjectEl = document.querySelector("h2[data-thread-perm-id]");
 
@@ -27,9 +26,9 @@ const observer = new MutationObserver(() => {
 
   const urls = extractUrls(body);
 
-  console.log("📧 Opened email detected");
-  console.log("📌 Subject:", subject);
-  console.log("🔗 URLs:", urls);
+  console.log("Opened email detected");
+  console.log("Subject:", subject);
+  console.log("URLs:", urls);
 
   chrome.runtime.sendMessage({
     type: "SCAN_EMAIL",
@@ -39,7 +38,6 @@ const observer = new MutationObserver(() => {
   });
 });
 
-// IMPORTANT: observe the whole document continuously
 observer.observe(document.body, {
   childList: true,
   subtree: true
