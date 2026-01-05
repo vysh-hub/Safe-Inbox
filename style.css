@@ -1,9 +1,54 @@
 body {
   font-family: Arial, sans-serif;
-  padding: 10px;
   width: 300px;
+  margin: 0;
+  padding: 12px;
+  background: #f8f9fa;
 }
 
-h3 {
+.container h2 {
   margin-top: 0;
+  font-size: 16px;
+}
+
+.risk-box {
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.safe {
+  background: #e6f4ea;
+  color: #188038;
+}
+
+.suspicious {
+  background: #fef7e0;
+  color: #f9ab00;
+}
+
+.phishing {
+  background: #fce8e6;
+  color: #d93025;
+}
+
+.section {
+  margin-top: 10px;
+}
+
+.section h3 {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+#url-list {
+  padding-left: 15px;
+  font-size: 12px;
+}
+
+#url-list li {
+  margin-bottom: 4px;
 }

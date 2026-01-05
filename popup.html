@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <h3>Email Phishing Scan</h3>
-    <div id="results"></div>
-    <script src="popup.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Phishing Scan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<h1>POPUP LOADED</h1>
+
+<body>
+  <div class="container">
+    <h2> Email Safety</h2>
+
+    <div id="overall" class="risk-box">
+      <span id="risk-label">Scanning…</span>
+      <span id="risk-score"></span>
+    </div>
+
+    <div class="section">
+      <h3>Email Content</h3>
+      <div id="email-score">—</div>
+    </div>
+
+    <div class="section">
+      <h3>URLs</h3>
+      <ul id="url-list"></ul>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
 </html>
